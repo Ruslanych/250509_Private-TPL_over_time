@@ -1,0 +1,1288 @@
+    new Level("delightful climb", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level(" Ruined", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("CONVOLUTION", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Nullspace", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Its MF Kaiji Sunday", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("glungus", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("HEAVIER METAL", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Cl5u37r0ph0b1a", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Pandora", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("CaveOfTheScarletSky", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Rabbit Hole", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("r a g e", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("dish rags", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Null", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("GRID unLOCK", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("ascend", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Uhm Huh", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("The Blooming Garden", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("The Elephants Foot", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Super Temu Guy", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Starlight Cyclone", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("im happy 4 you", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Trouncy Ball", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("apricot tower", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("rainbow tylenol", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Medramint", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("cell tower", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("eve", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Dead Of Night", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Project BUZZKILL", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Crerro Kaizo II", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("YiiK A PostAlbertRPG", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("atrophy", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Nothing You Want", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Kill The Panas 2", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("heartside", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("troll science", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Lets All Love Lain", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Yimu", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("We Forgot Everything", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Estado do Amapa", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Retribution", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Aerios", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Ascension Tower", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("CaveOfTheJollyGifts", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("heavy metal", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("dry cereal 1", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("OXIDE", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Gold Justice", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("i THE Mt kusari i", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("soggy16", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Estufa", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Physics Issue Plus", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Super egg hunt 64", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Intervallum", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Parting Ways", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Pointless Park", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Void World", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("SWAP CORE", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("climb puppy princess", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Sludge Trials", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Heartbeat", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Crerro Kaizo I", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("pnkr", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("LA COSA", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("forgotten veil", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("dump", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Feverest Dream", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Mastery of the Slope", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("unwell", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("the guards mission", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("urYUM", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Bramble Scramble", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Eustass Kidd", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("pyramid of despair", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("depth", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("SCORCHING LANDSCAPE", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("cabbit", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Whg3 Lv5", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Free Solo", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("BAP CAVE", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Level Where I Kill U", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("AVALANCHE", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("YOU ARE AN ANGEL", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("As The Rain Falls", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Fallen", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("7imu", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("chromplex X", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("I Am Panas", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Meisou Hanabi", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Tower of Bread 12", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Glass Castle", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Nuclear Alarm", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Adrenaline", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("The Hike II", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("ECT6 KOHTAKT", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("The  Flipside", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Blocktober Casino", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("clear paradise", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("US Healthcare", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("CASIO HELLBURST", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Exaltation", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Jetpack Trials", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Adanz9 Loves Tetris", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("patio light", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Master Trials", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Aibyou Challenge 69", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Kill The Panas", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("The Semi Needle", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("I Wanna Kill The PPG", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("IWannaKillMitzouli", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Endless Pain", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Whatever lies ahead", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("absence of light", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("wet", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Joeingly Chamber", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("DifficultChartTower", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("GetFixedBoi", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("fish in the sink", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("IWANNAFINDSHIMA", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Happy World", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("they were everything", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("A Stones Throw", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("live a little", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("LobaXmasTower", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Life and Beauty", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("box in the sky", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("are you a god", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("trIIals of coolboy", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("ULTRAVIOLET", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("MessingWithYourBrain", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Azarus", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("urjum", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Gumbi Kaizo Map I", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("IWannaTakeAShower", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Smelvin Teahouse", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Zenith Of The Sky", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Up In The Sky", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("_", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("The Hike", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("gd if it was good", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("NIGHT RUNNER", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("I WANNA BE THE CRY", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("sequoya jump trials", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("The Abyss", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Gravity Desert", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Above the Clouds", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("MAKS MAKSBETOV", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("settle for less", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("i wanna rob the top", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("folwers", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("IWannaBeTheUberGamer", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("HYPER GRAVITRON", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("I WANNA BE THE END", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Maddys Ten Trials", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("22 Trials of PAIN", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("HOOKIN UP WITH CUSTI", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Infinity Trials", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("vibe", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Terminal Heaven", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Smith Greens", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("LXE", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Ice Climbers", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("PAPYRUS NEVER CLEAR", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("from the depths", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Forgotten Saturation", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("IWannaBeatAcheron", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("EX CREW RR", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("BridgeOfTheSulfurSky", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Facility Escape", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("dstrd", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("micro", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("ETERNAL ENDING", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("The Pit", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("The needles garden", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("NEO PLAT", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Hello enemy", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Trafalgar Law", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Whats The Point", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("KAEF", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("IWannaKillAshxabad", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("FRUSTRATION", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Impossible Boy", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Good Level Design", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("TheSac9009 Area", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Double Jump Trials", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Black Lotus", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Temple of Trials", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("INFINITY TRIALS", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("TowerDespair", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("The Sun", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("The Trials", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Entrenched", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Outer Wall", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Broken Elevator II", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Bouncy Ball", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("space dash", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("How To Needle", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("dry cereal 2", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("chromicide", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Storm Front", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("radio tower", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Decaying Silo", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("ECSTASIS", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Nextphase", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Mighty Radiance", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("TetraTower", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("The Tower XXII", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("gaming 16", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("TheLightInTheDark", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("I wanna be the Baka", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Just a nightmare", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("fly the far away", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("rusted hollow", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("iwannachangegravity", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("TowerOfDespair", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Broken Elevator", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Trap Adventure", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("monochromatic", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Dance With Me", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Beatpulse", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Robot King", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Kaizo Forest", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Infinity Trial", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Ravioli Chamber", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Desserted Cakeland", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("chce byc chlopem", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("slope", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("i wanna good needle", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Terra Totidem", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Dungeon Treasures", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Tower of Infinity", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Girassol", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Wendys Revenge", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("IWannaBeTheHades", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Icy Peaks", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("DASH KING", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Fettuccini Chamber", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("How to platformer", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("The Gus Needle", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("dry cereal 3", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Andesite", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Mount Sorrow", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Erratum", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("On The Job", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Iron Thorns", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("To The Sun", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Kickingpro Challenge", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Chamber Trials", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("i wanna be the girl", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("GravLab", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("ftrial", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("pit of 50 trials", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Castellum", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Sunken Pier", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("EVERYTHINGISMIKU", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Damage", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("daydream canyon", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Tower of Geometry", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("ulysses", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Groen", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Scarlet Basement", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Interesting Tower", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("PROMETHEAN 2", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Kugelboi Never Clear", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Tombstone Project", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("OIL", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Flora Extreme Pie", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Super Hell Trial XVI", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("evolution", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("I wanna be the guy", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Spaghetti Chamber", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Eminem", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("tetris grandmaster", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Candy Crush", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("SEVEN SECTORS", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("VENUS", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("full boxed", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("yassan 2", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Worlds Hardest Game", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("duAlist", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("i feel numb", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Dark Passage", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Not Sunspike", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Boring Tower", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Fall Facility", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Stella Infection", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Rift", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Launch Factory", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Logodomy", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Fight of light", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("arachnid tetris", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Im that guy", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("GD Tower Tiny Square", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("chromaside", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Stay Ill", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Nebula Navigators", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Platformer chall 1", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("coolboymoney trials", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("The Cake Trials", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("The Unrealistic", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("I Wanna Be The GDash", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Sunset Summit", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Platformer Cancer 1", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("SpeedTek", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Graveyard Hell", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("blank 0", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Flipswap Factory", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("The Easiest Level", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("dashing over it", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("old site gdside", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("scorpion find way", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Frost Vault", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Emerald Sanctuary", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Coaster Mountain", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Tech City", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Jet Lag", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Hole in the Wall", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Dusky Plat", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("ShiftLeaf Temple", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Forsaken City", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
+    new Level("Black Spot", null, [
+        ALT._01_SINGLE_CHECKPOINT__,
+        ALT.ROBOT,
+        ]),
