@@ -6,6 +6,9 @@ from typing import Callable
 import flet
 import flet.canvas
 import datetime
+
+from six import string_types
+
 from custom_types import *
 
 class App(object):
@@ -26,13 +29,17 @@ class App(object):
                 padding=flet.Padding(top=0, bottom=0, left=3, right=3),
                 margin=flet.Margin(0, 0, 0, 0),
                 content=flet.Container(content=flet.Row(
-                    [
-                        # flet.Container(width=4),
-                        flet.Text(f"#{i + 1}", size=12, weight=flet.FontWeight.BOLD, width=35,
-                                  text_align=flet.TextAlign.END),
-                        flet.Text(f"{final_top[dates[_date_id]][i]}", size=10, width=120),
-
-                    ] + ([
+                    [flet.DragTarget(
+                        content=flet.Row([
+                            # flet.Container(width=4),
+                            flet.Text(f"#{i + 1}", size=12, weight=flet.FontWeight.BOLD, width=35,
+                                      text_align=flet.TextAlign.END),
+                            flet.Text(f"{final_top[dates[_date_id]][i]}", size=10, width=122),
+                        ]),
+                        group="Level" if self.current_date_id == _date_id and self.current_date_id < len(dates) - 1 else None,
+                        on_accept=lambda e: swap_levels(int(page.get_control(f"{e.src_id}").parent.controls[0].content.controls[0].value[1:])-1,
+                                                        int(e.control.content.controls[0].value[1:])-1),
+                    )] + ([
                              flet.Button(
                                  content=flet.Text(">", rotate=flet.Rotate(math.pi / 2)),
                                  height=15, width=15,
@@ -40,7 +47,7 @@ class App(object):
                                      padding=flet.Padding(left=7, top=0, right=0, bottom=0),
                                      shape=flet.RoundedRectangleBorder(radius=4),
                                  ),
-                                 on_click=lambda e: swap_levels_movedown(int(e.control.parent.controls[0].value[1:]) - 1)),
+                                 on_click=lambda e: swap_levels_movedown(int(e.control.parent.controls[0].content.controls[0].value[1:]) - 1)),
                              flet.Button(
                                  content=flet.Text("<", rotate=flet.Rotate(math.pi / 2)),
                                  height=15, width=15,
@@ -48,7 +55,7 @@ class App(object):
                                      padding=flet.Padding(left=7, top=0, right=0, bottom=0),
                                      shape=flet.RoundedRectangleBorder(radius=4),
                                  ),
-                                 on_click=lambda e: swap_levels_moveup(int(e.control.parent.controls[0].value[1:]) - 1)),
+                                 on_click=lambda e: swap_levels_moveup(int(e.control.parent.controls[0].content.controls[0].value[1:]) - 1)),
                              flet.Button(
                                  content=flet.Text("X", rotate=flet.Rotate(math.pi*0), size=12, height=14),
                                  height=15, width=15,
@@ -58,6 +65,11 @@ class App(object):
                                      shape=flet.RoundedRectangleBorder(radius=4),
                                  ),
                                  on_click=lambda e: delete_level(int(e.control.parent.controls[0].value[1:]) - 1)),
+                             flet.Draggable(
+                                 group="Level",
+                                 content=flet.Text("M", rotate=flet.Rotate(math.pi*0), size=12, height=14),
+
+                             ),
                          ] if self.current_date_id == _date_id and self.current_date_id < len(dates) - 1 else []),
                     alignment=flet.VerticalAlignment.CENTER,)
                 )
@@ -65,8 +77,13 @@ class App(object):
 
             def swap_levels(i, j):
                 tmp = final_top[dates[self.current_date_id]][i]
-                final_top[dates[self.current_date_id]][i], final_top[dates[self.current_date_id]][j] = final_top[dates[self.current_date_id]][j], tmp
-                this_levels.controls = [make_container(i, self.current_date_id) for i in range(len(final_top[dates[self.current_date_id]]))]
+                direction = 1 if i <= j else -1
+                for k in range(i, j, direction):
+                    final_top[dates[self.current_date_id]][k] = final_top[dates[self.current_date_id]][k+direction]
+                final_top[dates[self.current_date_id]][j] = tmp
+                # tmp = final_top[dates[self.current_date_id]][i]
+                # final_top[dates[self.current_date_id]][i], final_top[dates[self.current_date_id]][j] = final_top[dates[self.current_date_id]][j], tmp
+                this_levels.controls = [make_container(i_, self.current_date_id) for i_ in range(len(final_top[dates[self.current_date_id]]))]
                 this_levels.update()
             def swap_levels_movedown(i): return swap_levels(i, i+1)
             def swap_levels_moveup(i): return swap_levels(i, i-1)
@@ -201,22 +218,22 @@ class App(object):
             page.clean()
             page.add(flet.Row([
                 flet.Column([
-                    prev_day:=flet.Text("", text_align=flet.TextAlign.CENTER, width=260),
+                    prev_day:=flet.Text("", text_align=flet.TextAlign.CENTER, width=280),
                     flet.Container(
-                        prev_levels:=flet.Column([], scroll=flet.ScrollMode.ALWAYS, height=780, width=260),
+                        prev_levels:=flet.Column([], scroll=flet.ScrollMode.ALWAYS, height=780, width=280),
                         border=flet.Border(top=flet.BorderSide(2), bottom=flet.BorderSide(2), left=flet.BorderSide(2), right=flet.BorderSide(2)),
                         border_radius=5,
                     ),
                     flet.Container(height=50),
                 ]),
                 flet.Column([
-                    this_day:=flet.Text("", text_align=flet.TextAlign.CENTER, width=260, weight=flet.FontWeight.BOLD),
+                    this_day:=flet.Text("", text_align=flet.TextAlign.CENTER, width=280, weight=flet.FontWeight.BOLD),
                     flet.Container(
-                        this_levels:=flet.Column([], scroll=flet.ScrollMode.ALWAYS, height=780, width=260),
+                        this_levels:=flet.Column([], scroll=flet.ScrollMode.ALWAYS, height=780, width=280),
                         border=flet.Border(top=flet.BorderSide(2), bottom=flet.BorderSide(2), left=flet.BorderSide(2), right=flet.BorderSide(2)),
                         border_radius=5,
                     ),
-                    flet.Container(height=50, width=260, content=flet.Row([
+                    flet.Container(height=50, width=280, content=flet.Row([
                         flet.TextField(text_style=flet.TextStyle(size=14),
                                        content_padding=flet.Padding(1, 1, 1, 1), scroll_padding=flet.Padding(1, 1, 1, 1),
                                        height=20, width=150),
@@ -232,16 +249,16 @@ class App(object):
                     ], alignment=flet.MainAxisAlignment.CENTER, vertical_alignment=flet.CrossAxisAlignment.START)),
                 ]),
                 flet.Column([
-                    next_day:=flet.Text("", text_align=flet.TextAlign.CENTER, width=260),
+                    next_day:=flet.Text("", text_align=flet.TextAlign.CENTER, width=280),
                     flet.Container(
-                        next_levels:=flet.Column([], scroll=flet.ScrollMode.ALWAYS, height=780, width=260),
+                        next_levels:=flet.Column([], scroll=flet.ScrollMode.ALWAYS, height=780, width=280),
                         border=flet.Border(top=flet.BorderSide(2), bottom=flet.BorderSide(2), left=flet.BorderSide(2), right=flet.BorderSide(2)),
                         border_radius=5,
                     ),
                     flet.Container(height=50),
                 ]),
                 flet.Container(width=10),
-                markdown:=flet.Column(width=670, alignment=flet.MainAxisAlignment.START, height=700),
+                markdown:=flet.Column(width=610, alignment=flet.MainAxisAlignment.START, height=700),
             ]))
             with open("all_levels.txt", "r") as all_levels_file:
                 all_levels = [line[:-1] for line in all_levels_file.readlines()]
