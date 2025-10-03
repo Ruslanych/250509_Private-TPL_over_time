@@ -68,7 +68,7 @@ class App(object):
                              flet.Draggable(
                                  group="Level",
                                  content=flet.Text("M", rotate=flet.Rotate(math.pi*0), size=12, height=14),
-
+                                 content_feedback=flet.Text(f"{final_top[dates[_date_id]][i]}", size=10, width=122),
                              ),
                          ] if self.current_date_id == _date_id and self.current_date_id < len(dates) - 1 else []),
                     alignment=flet.VerticalAlignment.CENTER,)
