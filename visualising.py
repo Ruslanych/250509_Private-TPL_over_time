@@ -13,9 +13,9 @@ from custom_types import *
 
 class App(object):
     def main(self, page: flet.Page):
-        def on_keyboard(e: flet.KeyboardEvent):
-            if e.key == "Escape":
-                page.window.close()
+        def on_keyboard(e: flet.KeyboardEvent): pass
+            # if e.key == "Escape":
+            #     page.window.close()
 
         def start_animation():
             page.clean()
@@ -31,7 +31,7 @@ class App(object):
                 if b[i] not in a: return ("new", "#FFFF66")
                 x = a.index(b[i])
                 y = x + sum([int(i > new_elem) for new_elem in new_elements_indexes])
-                return ("new"     if y == -1 else ""        if i == y else f"↓{i-y}" if i > y else f"↑{y-i}",
+                return ("new"     if y == -1 else ""        if i == y else f"↓{i-y if i-y>1 else ''}" if i > y else f"↑{y-i if y-i>1 else ''}",
                         "#FFFF66" if y == -1 else "#F8F9FF" if i == y else "#66FF66" if i < y else "#FF6666")
 
             # flet.Container(flet.Column([
@@ -57,13 +57,13 @@ class App(object):
                         [flet.DragTarget(
                             content=flet.Row([
                                 # flet.Container(width=4),
-                                flet.Text(f"#{i + 1}", size=12, weight=flet.FontWeight.BOLD, width=35,
+                                flet.Text(f"#{i + 1}", size=12 if do_reverse_engineering else 18, weight=flet.FontWeight.BOLD, width=35 if do_reverse_engineering else 50,
                                           text_align=flet.TextAlign.END),
-                                flet.Text(f"{final_top[dates[_date_id]][i]}", size=10, width=120),
+                                flet.Text(f"{final_top[dates[_date_id]][i]}", size=10 if do_reverse_engineering else 16, width=120 if do_reverse_engineering else 190),
                                 flet.Text("\xa0" + (change_info:=get_change_info(i, _date_id, new_elements_indexes))[0] + "\xa0",
-                                          size=12,
+                                          size=12 if do_reverse_engineering else 18,
                                           bgcolor=change_info[1],
-                                          text_align=flet.TextAlign.END,weight=flet.FontWeight.W_600, width=35,),
+                                          text_align=flet.TextAlign.END,weight=flet.FontWeight.W_600, width=35 if do_reverse_engineering else 50,),
                             ]),
                             group="Level" if self.current_date_id == _date_id and self.current_date_id < len(dates) - 1 and do_reverse_engineering else None,
                             on_accept=lambda e: swap_levels(int(page.get_control(f"{e.src_id}").parent.controls[0].content.controls[0].value[1:])-1,
@@ -104,6 +104,14 @@ class App(object):
                     )
                 )
 
+            def make_containers_column(preproc):
+                containers = [make_container(i_, preproc) for i_ in range(len(final_top[dates[preproc[0]]]))]
+                if len(containers) > 100:
+                    containers = containers[:100] + [flet.Container(
+                        width=1000, height=2, bgcolor="#36618E", margin=flet.Margin(left=10, right=10, top=0, bottom=0)
+                    )] + containers[100:]
+                return containers
+
             def swap_levels(i, j):
                 tmp = final_top[dates[self.current_date_id]][i]
                 direction = 1 if i <= j else -1
@@ -113,7 +121,7 @@ class App(object):
                 # tmp = final_top[dates[self.current_date_id]][i]
                 # final_top[dates[self.current_date_id]][i], final_top[dates[self.current_date_id]][j] = final_top[dates[self.current_date_id]][j], tmp
                 preproc = containers_preprocess_info(self.current_date_id)
-                this_levels.controls = [make_container(i_, preproc) for i_ in range(len(final_top[dates[self.current_date_id]]))]
+                this_levels.controls = make_containers_column(preproc)
                 this_levels.update()
             def swap_levels_movedown(i): return swap_levels(i, i+1)
             def swap_levels_moveup(i): return swap_levels(i, i-1)
@@ -121,7 +129,7 @@ class App(object):
             def delete_level(i):
                 final_top[dates[self.current_date_id]] = final_top[dates[self.current_date_id]][:i] + final_top[dates[self.current_date_id]][i+1:]
                 preproc = containers_preprocess_info(self.current_date_id)
-                this_levels.controls = [make_container(i, preproc) for i in range(len(final_top[dates[self.current_date_id]]))]
+                this_levels.controls = make_containers_column(preproc)
                 this_levels.update()
 
             def add_level(event: flet.ControlEvent):
@@ -134,7 +142,7 @@ class App(object):
                 i = int(i)
                 final_top[dates[self.current_date_id]] = final_top[dates[self.current_date_id]][:i-1] + [parent.controls[0].value] + final_top[dates[self.current_date_id]][i-1:]
                 preproc = containers_preprocess_info(self.current_date_id)
-                this_levels.controls = [make_container(i, preproc) for i in range(len(final_top[dates[self.current_date_id]]))]
+                this_levels.controls = make_containers_column(preproc)
                 this_levels.update()
 
             def duplicate_prev_dates():
@@ -144,7 +152,7 @@ class App(object):
                         break
                     final_top[dates[date_id]] = [e for e in final_top[dates[self.current_date_id]]]
                 preproc = containers_preprocess_info(self.current_date_id - 1)
-                prev_levels.controls = [make_container(i, preproc) for i in range(len(final_top[dates[self.current_date_id - 1]]))] if self.current_date_id > 0 else []
+                prev_levels.controls = make_containers_column(preproc) if self.current_date_id > 0 else []
                 prev_levels.update()
 
             def duplicate_next_dates():
@@ -154,36 +162,36 @@ class App(object):
                         break
                     final_top[dates[date_id]] = [e for e in final_top[dates[self.current_date_id]]]
                 preproc = containers_preprocess_info(self.current_date_id + 1)
-                next_levels.controls = [make_container(i, preproc) for i in range(len(final_top[dates[self.current_date_id + 1]]))] if self.current_date_id > 0 else []
+                next_levels.controls = make_containers_column(preproc) if self.current_date_id > 0 else []
                 next_levels.update()
 
-            time_label = lambda _date_id: dates[_date_id].split()[0] + " | " + \
+            time_label = lambda _date_id: dates[_date_id].split()[0] + " // " + \
                                           str((datetime.datetime(*map(int, dates[_date_id][:10].split('.')[2::-1]))-\
                                                datetime.datetime(*map(int, dates[0][:10].split('.')[2::-1]))).days) + " days"
             def show_tops():
 
 
                 preproc = containers_preprocess_info(self.current_date_id - 1)
-                prev_levels.controls = [make_container(i, preproc) for i in range(len(final_top[dates[self.current_date_id - 1]]))] if self.current_date_id > 0 else []
+                prev_levels.controls = make_containers_column(preproc) if self.current_date_id > 0 else []
                 prev_day.value = time_label(self.current_date_id - 1) if self.current_date_id > 0 else ""
 
                 preproc = containers_preprocess_info(self.current_date_id)
-                this_levels.controls = [make_container(i, preproc) for i in range(len(final_top[dates[self.current_date_id]]))]
+                this_levels.controls = make_containers_column(preproc)
                 this_day.value = time_label(self.current_date_id)
 
 
                 preproc = containers_preprocess_info(self.current_date_id + 1)
-                next_levels.controls = [make_container(i, preproc) for i in range(len(final_top[dates[self.current_date_id + 1]]))] if self.current_date_id < len(dates) - 1 else []
+                next_levels.controls = make_containers_column(preproc) if self.current_date_id < len(dates) - 1 else []
                 next_day.value = time_label(self.current_date_id + 1) if self.current_date_id < len(dates) - 1 else ""
 
-                markdown.controls = ([
+                markdown.controls = (([
                     flet.Row([
                         flet.Button(
                             "Save top history",
                             on_click=lambda e: save_finaltop(),
                         ),
                         flet.Button(
-                            "Apply to the previous dates",
+                            "Apply to previous dates",
                             disabled=True,
                             on_click=lambda e: page_open(ad1 := flet.AlertDialog(
                                 modal=True,
@@ -195,7 +203,7 @@ class App(object):
                             )),
                         ),
                         flet.Button(
-                            "Apply to the next dates",
+                            "Apply to next dates",
                             on_click=lambda e: page_open(ad1 := flet.AlertDialog(
                                 modal=True,
                                 title="Confirmation Dialogue",
@@ -206,7 +214,11 @@ class App(object):
                             )),
                         )
                     ])
-                ] + [flet.Row([
+                ] if do_reverse_engineering else []) + [flet.Row([
+                       flet.Button(
+                           "Back to main menu",
+                           on_click=lambda e: init()
+                       ),
                        flet.Button(
                            "Go to",
                            on_click=lambda e: page_open((ad2 := flet.AlertDialog(
@@ -214,9 +226,9 @@ class App(object):
                                 # title="Confirmation Dialogue",
                                 actions=[
                                     flet.Column([
-                                        flet.Button(f"{i} | {dates[i]}", on_click=lambda e: (goto(int(e.control.text.split("|")[0])), page.close(e.control.parent.parent)))
+                                        flet.Button(f"{i} // {dates[i]} // {time_label(i).split(' // ')[1]}", on_click=lambda e: (goto(int(e.control.text.split("//")[0])), page.close(e.control.parent.parent)))
                                         for i in range(len(dates))
-                                    ], width=170, height=600, scroll=flet.ScrollMode.AUTO),
+                                    ], width=270, height=600, scroll=flet.ScrollMode.AUTO),
                                     flet.Button("Cancel", on_click=lambda e: page.close(e.control.parent)),
                                 ],
                             )),)
@@ -253,31 +265,69 @@ class App(object):
                 show_tops()
 
             def save_finaltop():
-                with open("total_changelog.txt", "w") as final_top_output:
-                    # final_top[dates[0]] = []
-                    # final_top[dates[1]] = [line[:-1] for line in open("og_top_2.txt", "r").readlines()]
-                    for date in dates:
-                        final_top_output.write(f"{date}\n{functools.reduce(lambda a, b: str(a) + '|' + str(b), final_top[date]) if len(final_top[date]) != 0 else ''}\n")
+                def proceed_save(e: flet.ControlEvent):
+                    original_data = ""
+                    try:
+                        with open("total_changelog.txt", "r") as final_top_original:
+                            for line in final_top_original.readlines():
+                                original_data += line
+                        save_data = ""
+                        for date in dates:
+                            save_data += f"{date}\n{functools.reduce(lambda a, b: str(a) + '|' + str(b), final_top[date]) if len(final_top[date]) != 0 else ''}\n"
+                        with open("total_changelog.txt", "w") as final_top_output:
+                            final_top_output.write(save_data)
+
+                        ad3.content = flet.Text("Saved successfully", bgcolor="#66FF66", weight=flet.FontWeight.BOLD, size=20)
+                        ad3.actions = [
+                            flet.Button("OK", on_click=lambda e: page.close(e.control.parent)),
+                        ]
+                        ad3.update()
+                    except Exception as exc:
+                        if original_data != "":
+                            with open("total_changelog.txt", "w") as final_top_output:
+                                final_top_output.write(original_data)
+                        def show_error(e):
+                            ad3.content = flet.Text(str(ad3.exc), bgcolor="#FF6666", size=14)
+                            ad3.actions = [
+                                flet.Button("OK", on_click=lambda e: page.close(e.control.parent)),
+                            ]
+                            ad3.update()
+                        ad3.content = flet.Text("Failed to save", bgcolor="#FF6666", weight=flet.FontWeight.BOLD, size=20)
+                        ad3.actions = [
+                            flet.Button("Check error description", on_click=show_error),
+                            flet.Button("OK", on_click=lambda e: page.close(e.control.parent)),
+                        ]
+                        ad3.exc = exc
+                        ad3.update()
+                page_open(ad3 := flet.AlertDialog(
+                    modal=True,
+                    # title="Confirmation Dialogue",
+                    content=flet.Text("Save changelog?", weight=flet.FontWeight.BOLD, size=20),
+                    actions=[
+                        flet.Button("Yes", on_click=proceed_save),
+                        flet.Button("Cancel", on_click=lambda e: page.close(e.control.parent)),
+                    ]
+                )),
 
             page.clean()
             page.add(flet.Row([
                 flet.Column([
-                    prev_day:=flet.Text("", text_align=flet.TextAlign.CENTER, width=320),
+                    prev_day:=flet.Text("", text_align=flet.TextAlign.CENTER, width=330),
                     flet.Container(
-                        prev_levels:=flet.Column([], scroll=flet.ScrollMode.ALWAYS, height=780, width=320),
+                        prev_levels:=flet.Column([], scroll=flet.ScrollMode.ALWAYS, height=780, width=330),
                         border=flet.Border(top=flet.BorderSide(2), bottom=flet.BorderSide(2), left=flet.BorderSide(2), right=flet.BorderSide(2)),
                         border_radius=5,
                     ),
                     flet.Container(height=50),
                 ]),
                 flet.Column([
-                    this_day:=flet.Text("", text_align=flet.TextAlign.CENTER, width=320, weight=flet.FontWeight.BOLD),
+                    this_day:=flet.Text("", text_align=flet.TextAlign.CENTER, width=330, weight=flet.FontWeight.BOLD),
                     flet.Container(
-                        this_levels:=flet.Column([], scroll=flet.ScrollMode.ALWAYS, height=780, width=320),
+                        this_levels:=flet.Column([], scroll=flet.ScrollMode.ALWAYS, height=780, width=330),
                         border=flet.Border(top=flet.BorderSide(2), bottom=flet.BorderSide(2), left=flet.BorderSide(2), right=flet.BorderSide(2)),
                         border_radius=5,
                     ),
-                    flet.Container(height=50, width=320, content=flet.Row([
+                    flet.Container(height=50, width=330, content=flet.Row([
                         flet.TextField(text_style=flet.TextStyle(size=14),
                                        content_padding=flet.Padding(1, 1, 1, 1), scroll_padding=flet.Padding(1, 1, 1, 1),
                                        height=20, width=150),
@@ -293,16 +343,16 @@ class App(object):
                     ], alignment=flet.MainAxisAlignment.CENTER, vertical_alignment=flet.CrossAxisAlignment.START)),
                 ]),
                 flet.Column([
-                    next_day:=flet.Text("", text_align=flet.TextAlign.CENTER, width=320),
+                    next_day:=flet.Text("", text_align=flet.TextAlign.CENTER, width=330),
                     flet.Container(
-                        next_levels:=flet.Column([], scroll=flet.ScrollMode.ALWAYS, height=780, width=320),
+                        next_levels:=flet.Column([], scroll=flet.ScrollMode.ALWAYS, height=780, width=330),
                         border=flet.Border(top=flet.BorderSide(2), bottom=flet.BorderSide(2), left=flet.BorderSide(2), right=flet.BorderSide(2)),
                         border_radius=5,
                     ),
                     flet.Container(height=50),
                 ]),
                 # flet.Container(width=2, height=700, bgcolor="#36618E"),
-                markdown:=flet.Column(width=500, alignment=flet.MainAxisAlignment.START, height=700),
+                markdown:=flet.Column(width=480, alignment=flet.MainAxisAlignment.START, height=700),
             ]))
             with open("all_levels.txt", "r") as all_levels_file:
                 all_levels = [line[:-1] for line in all_levels_file.readlines()]
@@ -349,36 +399,42 @@ class App(object):
 
         def page_open(control: flet.Control) -> flet.Page:
             return page.open(control)
-        page.on_keyboard_event = on_keyboard
-        page.Title = "TPL over time"
-        page.window.full_screen = True
-        page.add(
-            flet.Container(
-                padding=flet.Padding(top=40, left=75, right=0, bottom=0), content=
-                flet.Button(
-                    content=flet.Container(
-                        flet.Text("Start the animation", font_family="Helvetica", size=30),
-                        padding=flet.Padding(top=10, left=10, right=10, bottom=10)
+
+        def init():
+            page.on_keyboard_event = on_keyboard
+            page.Title = "TPL over time"
+            page.window.full_screen = True
+            page.clean()
+            page.add(
+                flet.Container(
+                    padding=flet.Padding(top=40, left=75, right=0, bottom=0), content=
+                    flet.Button(
+                        content=flet.Container(
+                            flet.Text("View TPL Changelog", font_family="Helvetica", size=30),
+                            padding=flet.Padding(top=10, left=10, right=10, bottom=10)
+                        ),
+                        style=flet.ButtonStyle(shape=flet.RoundedRectangleBorder(radius=20)),
+                        on_click=lambda event: start(do_reverse_engineering=False),
                     ),
-                    style=flet.ButtonStyle(shape=flet.RoundedRectangleBorder(radius=20)),
-                    on_click=lambda event: start(do_reverse_engineering=False),
-                ),
+                )
             )
-        )
-        page.add(
-            flet.Container(
-                padding=flet.Padding(top=40, left=75, right=0, bottom=0), content=
-                flet.Button(
-                    content=flet.Container(
-                        flet.Text("Start Reverse Engineering", font_family="Helvetica", size=30),
-                        padding=flet.Padding(top=10, left=10, right=10, bottom=10)
+            page.add(
+                flet.Container(
+                    padding=flet.Padding(top=40, left=75, right=0, bottom=0), content=
+                    flet.Button(
+                        content=flet.Container(
+                            flet.Text("Start Reverse Engineering", font_family="Helvetica", size=30),
+                            padding=flet.Padding(top=10, left=10, right=10, bottom=10)
+                        ),
+                        style=flet.ButtonStyle(shape=flet.RoundedRectangleBorder(radius=20)),
+                        on_click=lambda event: start(do_reverse_engineering=True),
+                        disabled=True,
                     ),
-                    style=flet.ButtonStyle(shape=flet.RoundedRectangleBorder(radius=20)),
-                    on_click=lambda event: start(do_reverse_engineering=True),
-                ),
+                )
             )
-        )
-        page.update()
+            page.update()
+
+        init()
 
 flet.app(App().main)
 
