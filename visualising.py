@@ -24,56 +24,85 @@ class App(object):
             )
             page.update()
 
-        def start_reverse_engineering():
-            make_container = lambda i, _date_id: flet.Container(
-                padding=flet.Padding(top=0, bottom=0, left=3, right=3),
-                margin=flet.Margin(0, 0, 0, 0),
-                content=flet.Container(content=flet.Row(
-                    [flet.DragTarget(
-                        content=flet.Row([
-                            # flet.Container(width=4),
-                            flet.Text(f"#{i + 1}", size=12, weight=flet.FontWeight.BOLD, width=35,
-                                      text_align=flet.TextAlign.END),
-                            flet.Text(f"{final_top[dates[_date_id]][i]}", size=10, width=122),
-                        ]),
-                        group="Level" if self.current_date_id == _date_id and self.current_date_id < len(dates) - 1 else None,
-                        on_accept=lambda e: swap_levels(int(page.get_control(f"{e.src_id}").parent.controls[0].content.controls[0].value[1:])-1,
-                                                        int(e.control.content.controls[0].value[1:])-1),
-                    )] + ([
-                             flet.Button(
-                                 content=flet.Text(">", rotate=flet.Rotate(math.pi / 2)),
-                                 height=15, width=15,
-                                 style=flet.ButtonStyle(
-                                     padding=flet.Padding(left=7, top=0, right=0, bottom=0),
-                                     shape=flet.RoundedRectangleBorder(radius=4),
-                                 ),
-                                 on_click=lambda e: swap_levels_movedown(int(e.control.parent.controls[0].content.controls[0].value[1:]) - 1)),
-                             flet.Button(
-                                 content=flet.Text("<", rotate=flet.Rotate(math.pi / 2)),
-                                 height=15, width=15,
-                                 style=flet.ButtonStyle(
-                                     padding=flet.Padding(left=7, top=0, right=0, bottom=0),
-                                     shape=flet.RoundedRectangleBorder(radius=4),
-                                 ),
-                                 on_click=lambda e: swap_levels_moveup(int(e.control.parent.controls[0].content.controls[0].value[1:]) - 1)),
-                             flet.Button(
-                                 content=flet.Text("X", rotate=flet.Rotate(math.pi*0), size=12, height=14),
-                                 height=15, width=15,
-                                 expand=False,
-                                 style=flet.ButtonStyle(
-                                     padding=flet.Padding(left=0, top=0, right=0, bottom=0),
-                                     shape=flet.RoundedRectangleBorder(radius=4),
-                                 ),
-                                 on_click=lambda e: delete_level(int(e.control.parent.controls[0].value[1:]) - 1)),
-                             flet.Draggable(
-                                 group="Level",
-                                 content=flet.Text("M", rotate=flet.Rotate(math.pi*0), size=12, height=14),
-                                 content_feedback=flet.Text(f"{final_top[dates[_date_id]][i]}", size=10, width=122),
-                             ),
-                         ] if self.current_date_id == _date_id and self.current_date_id < len(dates) - 1 else []),
-                    alignment=flet.VerticalAlignment.CENTER,)
+        def start(do_reverse_engineering: bool):
+            def get_change_info(i, _date_id, new_elements_indexes):
+                if _date_id == 0 or new_elements_indexes == None: return ("new", "#FFFF66")
+                a, b = final_top[dates[_date_id-1]], final_top[dates[_date_id]]
+                if b[i] not in a: return ("new", "#FFFF66")
+                x = a.index(b[i])
+                y = x + sum([int(i > new_elem) for new_elem in new_elements_indexes])
+                return ("new"     if y == -1 else ""        if i == y else f"↓{i-y}" if i > y else f"↑{y-i}",
+                        "#FFFF66" if y == -1 else "#F8F9FF" if i == y else "#66FF66" if i < y else "#FF6666")
+
+            # flet.Container(flet.Column([
+            #     flet.Markdown(markdowns[dates[self.current_date_id]].replace("<@&1187636497470472192>",
+            #                                                                  "**@List Update Notifications**"),
+            #                   selectable=True),
+            # ], scroll=flet.ScrollMode.AUTO),
+            #     height=600, width=670, padding=flet.Padding(3, 0, 3, 0),
+            #     border_radius=4, border=flet.Border(*[flet.BorderSide(width=1, color="#000000") for i in "1234"])),
+
+            def containers_preprocess_info(_date_id):
+                if _date_id <= 0 or _date_id >= len(dates): return (_date_id, None)
+                a, b = final_top[dates[_date_id - 1]], final_top[dates[_date_id]]
+                new_elements_indexes = [b.index(be) for be in [e for e in b if e not in a]]
+                return (_date_id, new_elements_indexes)
+
+            def make_container(i, preprocessed_information):
+                _date_id, new_elements_indexes = preprocessed_information
+                return flet.Container(
+                    padding=flet.Padding(top=0, bottom=0, left=3, right=3),
+                    margin=flet.Margin(0, 0, 0, 0),
+                    content=flet.Container(content=flet.Row(
+                        [flet.DragTarget(
+                            content=flet.Row([
+                                # flet.Container(width=4),
+                                flet.Text(f"#{i + 1}", size=12, weight=flet.FontWeight.BOLD, width=35,
+                                          text_align=flet.TextAlign.END),
+                                flet.Text(f"{final_top[dates[_date_id]][i]}", size=10, width=120),
+                                flet.Text("\xa0" + (change_info:=get_change_info(i, _date_id, new_elements_indexes))[0] + "\xa0",
+                                          size=12,
+                                          bgcolor=change_info[1],
+                                          text_align=flet.TextAlign.END,weight=flet.FontWeight.W_600, width=35,),
+                            ]),
+                            group="Level" if self.current_date_id == _date_id and self.current_date_id < len(dates) - 1 and do_reverse_engineering else None,
+                            on_accept=lambda e: swap_levels(int(page.get_control(f"{e.src_id}").parent.controls[0].content.controls[0].value[1:])-1,
+                                                            int(e.control.content.controls[0].value[1:])-1),
+                        )] + ([
+                            flet.Button(
+                                content=flet.Text(">", rotate=flet.Rotate(math.pi / 2)),
+                                height=15, width=15,
+                                style=flet.ButtonStyle(
+                                    padding=flet.Padding(left=7, top=0, right=0, bottom=0),
+                                    shape=flet.RoundedRectangleBorder(radius=4),
+                                ),
+                                on_click=lambda e: swap_levels_movedown(int(e.control.parent.controls[0].content.controls[0].value[1:]) - 1)),
+                            flet.Button(
+                                content=flet.Text("<", rotate=flet.Rotate(math.pi / 2)),
+                                height=15, width=15,
+                                style=flet.ButtonStyle(
+                                    padding=flet.Padding(left=0, top=0, right=0, bottom=0),
+                                    shape=flet.RoundedRectangleBorder(radius=4),
+                                ),
+                                on_click=lambda e: swap_levels_moveup(int(e.control.parent.controls[0].content.controls[0].value[1:]) - 1)),
+                            flet.Button(
+                                content=flet.Text("X", rotate=flet.Rotate(math.pi*0), size=12, height=14),
+                                height=15, width=15,
+                                expand=False,
+                                style=flet.ButtonStyle(
+                                    padding=flet.Padding(left=0, top=0, right=0, bottom=0),
+                                    shape=flet.RoundedRectangleBorder(radius=4),
+                                ),
+                                on_click=lambda e: delete_level(int(e.control.parent.controls[0].content.controls[0].value[1:]) - 1)),
+                            flet.Draggable(
+                                group="Level",
+                                content=flet.Text("M", rotate=flet.Rotate(math.pi*0), size=12, height=14, width=15),
+                                content_feedback=flet.Text(f"{final_top[dates[_date_id]][i]}", size=10, width=122),
+                            ),
+                        ] if self.current_date_id == _date_id and self.current_date_id < len(dates) - 1 and do_reverse_engineering else []),
+                        alignment=flet.VerticalAlignment.CENTER,)
+                    )
                 )
-            )
 
             def swap_levels(i, j):
                 tmp = final_top[dates[self.current_date_id]][i]
@@ -83,14 +112,16 @@ class App(object):
                 final_top[dates[self.current_date_id]][j] = tmp
                 # tmp = final_top[dates[self.current_date_id]][i]
                 # final_top[dates[self.current_date_id]][i], final_top[dates[self.current_date_id]][j] = final_top[dates[self.current_date_id]][j], tmp
-                this_levels.controls = [make_container(i_, self.current_date_id) for i_ in range(len(final_top[dates[self.current_date_id]]))]
+                preproc = containers_preprocess_info(self.current_date_id)
+                this_levels.controls = [make_container(i_, preproc) for i_ in range(len(final_top[dates[self.current_date_id]]))]
                 this_levels.update()
             def swap_levels_movedown(i): return swap_levels(i, i+1)
             def swap_levels_moveup(i): return swap_levels(i, i-1)
 
             def delete_level(i):
                 final_top[dates[self.current_date_id]] = final_top[dates[self.current_date_id]][:i] + final_top[dates[self.current_date_id]][i+1:]
-                this_levels.controls = [make_container(i, self.current_date_id) for i in range(len(final_top[dates[self.current_date_id]]))]
+                preproc = containers_preprocess_info(self.current_date_id)
+                this_levels.controls = [make_container(i, preproc) for i in range(len(final_top[dates[self.current_date_id]]))]
                 this_levels.update()
 
             def add_level(event: flet.ControlEvent):
@@ -102,7 +133,8 @@ class App(object):
                     return
                 i = int(i)
                 final_top[dates[self.current_date_id]] = final_top[dates[self.current_date_id]][:i-1] + [parent.controls[0].value] + final_top[dates[self.current_date_id]][i-1:]
-                this_levels.controls = [make_container(i, self.current_date_id) for i in range(len(final_top[dates[self.current_date_id]]))]
+                preproc = containers_preprocess_info(self.current_date_id)
+                this_levels.controls = [make_container(i, preproc) for i in range(len(final_top[dates[self.current_date_id]]))]
                 this_levels.update()
 
             def duplicate_prev_dates():
@@ -111,7 +143,8 @@ class App(object):
                     if date_id == self.current_date_id:
                         break
                     final_top[dates[date_id]] = [e for e in final_top[dates[self.current_date_id]]]
-                prev_levels.controls = [make_container(i, self.current_date_id - 1) for i in range(len(final_top[dates[self.current_date_id - 1]]))] if self.current_date_id > 0 else []
+                preproc = containers_preprocess_info(self.current_date_id - 1)
+                prev_levels.controls = [make_container(i, preproc) for i in range(len(final_top[dates[self.current_date_id - 1]]))] if self.current_date_id > 0 else []
                 prev_levels.update()
 
             def duplicate_next_dates():
@@ -120,17 +153,28 @@ class App(object):
                     if date_id == self.current_date_id:
                         break
                     final_top[dates[date_id]] = [e for e in final_top[dates[self.current_date_id]]]
-                next_levels.controls = [make_container(i, self.current_date_id + 1) for i in range(len(final_top[dates[self.current_date_id + 1]]))] if self.current_date_id > 0 else []
+                preproc = containers_preprocess_info(self.current_date_id + 1)
+                next_levels.controls = [make_container(i, preproc) for i in range(len(final_top[dates[self.current_date_id + 1]]))] if self.current_date_id > 0 else []
                 next_levels.update()
 
+            time_label = lambda _date_id: dates[_date_id].split()[0] + " | " + \
+                                          str((datetime.datetime(*map(int, dates[_date_id][:10].split('.')[2::-1]))-\
+                                               datetime.datetime(*map(int, dates[0][:10].split('.')[2::-1]))).days) + " days"
             def show_tops():
-                prev_levels.controls = [make_container(i, self.current_date_id - 1) for i in range(len(final_top[dates[self.current_date_id - 1]]))] if self.current_date_id > 0 else []
-                prev_day.value = dates[self.current_date_id - 1].split()[0] if self.current_date_id > 0 else ""
-                this_levels.controls = [make_container(i, self.current_date_id)     for i in range(len(final_top[dates[self.current_date_id]]))]
-                this_day.value = dates[self.current_date_id].split()[0]
-                next_levels.controls = [make_container(i, self.current_date_id + 1) for i in range(len(final_top[dates[self.current_date_id + 1]]))] if self.current_date_id < len(dates) - 1 else []
-                next_day.value = dates[self.current_date_id + 1].split()[0] if self.current_date_id < len(dates) - 1 else ""
 
+
+                preproc = containers_preprocess_info(self.current_date_id - 1)
+                prev_levels.controls = [make_container(i, preproc) for i in range(len(final_top[dates[self.current_date_id - 1]]))] if self.current_date_id > 0 else []
+                prev_day.value = time_label(self.current_date_id - 1) if self.current_date_id > 0 else ""
+
+                preproc = containers_preprocess_info(self.current_date_id)
+                this_levels.controls = [make_container(i, preproc) for i in range(len(final_top[dates[self.current_date_id]]))]
+                this_day.value = time_label(self.current_date_id)
+
+
+                preproc = containers_preprocess_info(self.current_date_id + 1)
+                next_levels.controls = [make_container(i, preproc) for i in range(len(final_top[dates[self.current_date_id + 1]]))] if self.current_date_id < len(dates) - 1 else []
+                next_day.value = time_label(self.current_date_id + 1) if self.current_date_id < len(dates) - 1 else ""
 
                 markdown.controls = ([
                     flet.Row([
@@ -209,7 +253,7 @@ class App(object):
                 show_tops()
 
             def save_finaltop():
-                with open("final_top_2.txt", "w") as final_top_output:
+                with open("total_changelog.txt", "w") as final_top_output:
                     # final_top[dates[0]] = []
                     # final_top[dates[1]] = [line[:-1] for line in open("og_top_2.txt", "r").readlines()]
                     for date in dates:
@@ -218,22 +262,22 @@ class App(object):
             page.clean()
             page.add(flet.Row([
                 flet.Column([
-                    prev_day:=flet.Text("", text_align=flet.TextAlign.CENTER, width=280),
+                    prev_day:=flet.Text("", text_align=flet.TextAlign.CENTER, width=320),
                     flet.Container(
-                        prev_levels:=flet.Column([], scroll=flet.ScrollMode.ALWAYS, height=780, width=280),
+                        prev_levels:=flet.Column([], scroll=flet.ScrollMode.ALWAYS, height=780, width=320),
                         border=flet.Border(top=flet.BorderSide(2), bottom=flet.BorderSide(2), left=flet.BorderSide(2), right=flet.BorderSide(2)),
                         border_radius=5,
                     ),
                     flet.Container(height=50),
                 ]),
                 flet.Column([
-                    this_day:=flet.Text("", text_align=flet.TextAlign.CENTER, width=280, weight=flet.FontWeight.BOLD),
+                    this_day:=flet.Text("", text_align=flet.TextAlign.CENTER, width=320, weight=flet.FontWeight.BOLD),
                     flet.Container(
-                        this_levels:=flet.Column([], scroll=flet.ScrollMode.ALWAYS, height=780, width=280),
+                        this_levels:=flet.Column([], scroll=flet.ScrollMode.ALWAYS, height=780, width=320),
                         border=flet.Border(top=flet.BorderSide(2), bottom=flet.BorderSide(2), left=flet.BorderSide(2), right=flet.BorderSide(2)),
                         border_radius=5,
                     ),
-                    flet.Container(height=50, width=280, content=flet.Row([
+                    flet.Container(height=50, width=320, content=flet.Row([
                         flet.TextField(text_style=flet.TextStyle(size=14),
                                        content_padding=flet.Padding(1, 1, 1, 1), scroll_padding=flet.Padding(1, 1, 1, 1),
                                        height=20, width=150),
@@ -249,16 +293,16 @@ class App(object):
                     ], alignment=flet.MainAxisAlignment.CENTER, vertical_alignment=flet.CrossAxisAlignment.START)),
                 ]),
                 flet.Column([
-                    next_day:=flet.Text("", text_align=flet.TextAlign.CENTER, width=280),
+                    next_day:=flet.Text("", text_align=flet.TextAlign.CENTER, width=320),
                     flet.Container(
-                        next_levels:=flet.Column([], scroll=flet.ScrollMode.ALWAYS, height=780, width=280),
+                        next_levels:=flet.Column([], scroll=flet.ScrollMode.ALWAYS, height=780, width=320),
                         border=flet.Border(top=flet.BorderSide(2), bottom=flet.BorderSide(2), left=flet.BorderSide(2), right=flet.BorderSide(2)),
                         border_radius=5,
                     ),
                     flet.Container(height=50),
                 ]),
-                flet.Container(width=10),
-                markdown:=flet.Column(width=610, alignment=flet.MainAxisAlignment.START, height=700),
+                # flet.Container(width=2, height=700, bgcolor="#36618E"),
+                markdown:=flet.Column(width=500, alignment=flet.MainAxisAlignment.START, height=700),
             ]))
             with open("all_levels.txt", "r") as all_levels_file:
                 all_levels = [line[:-1] for line in all_levels_file.readlines()]
@@ -286,7 +330,7 @@ class App(object):
             def curr_date() -> Date | None: return dates[self.current_date_id]
             def prev_date() -> Date | None: return None if self.current_date_id == 0 else dates[self.current_date_id - 1]
 
-            with open("final_top_2.txt", "r") as final_top_file:
+            with open("total_changelog.txt", "r") as final_top_file:
                 final_top: dict[Date: list[Level]] = dict()
                 last_date: Date = None
                 i = 0
@@ -317,7 +361,7 @@ class App(object):
                         padding=flet.Padding(top=10, left=10, right=10, bottom=10)
                     ),
                     style=flet.ButtonStyle(shape=flet.RoundedRectangleBorder(radius=20)),
-                    on_click=lambda event: start_animation(),
+                    on_click=lambda event: start(do_reverse_engineering=False),
                 ),
             )
         )
@@ -330,7 +374,7 @@ class App(object):
                         padding=flet.Padding(top=10, left=10, right=10, bottom=10)
                     ),
                     style=flet.ButtonStyle(shape=flet.RoundedRectangleBorder(radius=20)),
-                    on_click=lambda event: start_reverse_engineering(),
+                    on_click=lambda event: start(do_reverse_engineering=True),
                 ),
             )
         )

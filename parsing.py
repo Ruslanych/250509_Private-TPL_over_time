@@ -134,7 +134,7 @@ if __name__ == "__main__":
     print(*final_top[last_date], sep="\n")
     print(len(final_top[last_date]))
 
-    with (open("final_top.txt", "w") as final_top_file,
+    with (open("final_top_legacy.txt", "w") as final_top_file,
           open("output3.txt", "w") as final_output):
         for k, v in list(final_top.items())[::-1]:
             final_top_file.write(f"{k}\n")
