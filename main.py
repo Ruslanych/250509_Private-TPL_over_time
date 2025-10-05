@@ -1,17 +1,34 @@
 import functools
 import math
-from multiprocessing.reduction import duplicate
+import json
 from typing import Callable
 
 import flet
 import flet.canvas
 import datetime
 
-from six import string_types
+# from six import string_types
 
 from custom_types import *
 
 class App(object):
+    get_current_date_id: Callable[[list[Date]],int]
+    today: Date
+
+    enable_reverse_engineering: bool
+    add_today: bool
+
+    def load_settings(self):
+        with open("settings.json", "r") as settings_file:
+            settings_text = ""
+            for line in settings_file.readlines():
+                settings_text += line
+            settings_json = json.loads(settings_text)
+            self.enable_reverse_engineering = settings_json["enable_reverse_engineering"]["value"]
+            self.add_today = settings_json["add_today"]["value"]
+            self.today = settings_json["today"]["value"]
+            self.get_current_date_id = (lambda dates: len(dates) - 1) if settings_json["start_from"]["value"] == 0 else (lambda dates: 0)
+
     def main(self, page: flet.Page):
         def on_keyboard(e: flet.KeyboardEvent): pass
             # if e.key == "Escape":
@@ -27,7 +44,7 @@ class App(object):
         def start(do_reverse_engineering: bool):
             def get_change_info(i, _date_id, new_elements_indexes):
                 if _date_id == 0 or new_elements_indexes == None: return ("new", "#FFFF66")
-                a, b = final_top[dates[_date_id-1]], final_top[dates[_date_id]]
+                a, b = total_changelog[dates[_date_id-1]], total_changelog[dates[_date_id]]
                 if b[i] not in a: return ("new", "#FFFF66")
                 x = a.index(b[i])
                 y = x + sum([int(i > new_elem) for new_elem in new_elements_indexes])
@@ -44,7 +61,7 @@ class App(object):
 
             def containers_preprocess_info(_date_id):
                 if _date_id <= 0 or _date_id >= len(dates): return (_date_id, None)
-                a, b = final_top[dates[_date_id - 1]], final_top[dates[_date_id]]
+                a, b = total_changelog[dates[_date_id - 1]], total_changelog[dates[_date_id]]
                 new_elements_indexes = [b.index(be) for be in [e for e in b if e not in a]]
                 return (_date_id, new_elements_indexes)
 
@@ -59,13 +76,13 @@ class App(object):
                                 # flet.Container(width=4),
                                 flet.Text(f"#{i + 1}", size=12 if do_reverse_engineering else 18, weight=flet.FontWeight.BOLD, width=35 if do_reverse_engineering else 50,
                                           text_align=flet.TextAlign.END),
-                                flet.Text(f"{final_top[dates[_date_id]][i]}", size=10 if do_reverse_engineering else 16, width=120 if do_reverse_engineering else 190),
+                                flet.Text(f"{total_changelog[dates[_date_id]][i]}", size=10 if do_reverse_engineering else 16, width=120 if do_reverse_engineering else 190),
                                 flet.Text("\xa0" + (change_info:=get_change_info(i, _date_id, new_elements_indexes))[0] + "\xa0",
                                           size=12 if do_reverse_engineering else 18,
                                           bgcolor=change_info[1],
                                           text_align=flet.TextAlign.END,weight=flet.FontWeight.W_600, width=35 if do_reverse_engineering else 50,),
                             ]),
-                            group="Level" if self.current_date_id == _date_id and self.current_date_id < len(dates) - 1 and do_reverse_engineering else None,
+                            group="Level" if self.current_date_id == _date_id and self.current_date_id < len(dates) and self.current_date_id != self.today_date_id and do_reverse_engineering else None,
                             on_accept=lambda e: swap_levels(int(page.get_control(f"{e.src_id}").parent.controls[0].content.controls[0].value[1:])-1,
                                                             int(e.control.content.controls[0].value[1:])-1),
                         )] + ([
@@ -97,15 +114,15 @@ class App(object):
                             flet.Draggable(
                                 group="Level",
                                 content=flet.Text("M", rotate=flet.Rotate(math.pi*0), size=12, height=14, width=15),
-                                content_feedback=flet.Text(f"{final_top[dates[_date_id]][i]}", size=10, width=122),
+                                content_feedback=flet.Text(f"{total_changelog[dates[_date_id]][i]}", size=10, width=122),
                             ),
-                        ] if self.current_date_id == _date_id and self.current_date_id < len(dates) - 1 and do_reverse_engineering else []),
+                        ] if self.current_date_id == _date_id and self.current_date_id < len(dates) and self.current_date_id != self.today_date_id and do_reverse_engineering else []),
                         alignment=flet.VerticalAlignment.CENTER,)
                     )
                 )
 
             def make_containers_column(preproc):
-                containers = [make_container(i_, preproc) for i_ in range(len(final_top[dates[preproc[0]]]))]
+                containers = [make_container(i_, preproc) for i_ in range(len(total_changelog[dates[preproc[0]]]))]
                 if len(containers) > 100:
                     containers = containers[:100] + [flet.Container(
                         width=1000, height=2, bgcolor="#36618E", margin=flet.Margin(left=10, right=10, top=0, bottom=0)
@@ -113,11 +130,11 @@ class App(object):
                 return containers
 
             def swap_levels(i, j):
-                tmp = final_top[dates[self.current_date_id]][i]
+                tmp = total_changelog[dates[self.current_date_id]][i]
                 direction = 1 if i <= j else -1
                 for k in range(i, j, direction):
-                    final_top[dates[self.current_date_id]][k] = final_top[dates[self.current_date_id]][k+direction]
-                final_top[dates[self.current_date_id]][j] = tmp
+                    total_changelog[dates[self.current_date_id]][k] = total_changelog[dates[self.current_date_id]][k+direction]
+                total_changelog[dates[self.current_date_id]][j] = tmp
                 # tmp = final_top[dates[self.current_date_id]][i]
                 # final_top[dates[self.current_date_id]][i], final_top[dates[self.current_date_id]][j] = final_top[dates[self.current_date_id]][j], tmp
                 preproc = containers_preprocess_info(self.current_date_id)
@@ -127,40 +144,42 @@ class App(object):
             def swap_levels_moveup(i): return swap_levels(i, i-1)
 
             def delete_level(i):
-                final_top[dates[self.current_date_id]] = final_top[dates[self.current_date_id]][:i] + final_top[dates[self.current_date_id]][i+1:]
+                total_changelog[dates[self.current_date_id]] = total_changelog[dates[self.current_date_id]][:i] + total_changelog[dates[self.current_date_id]][i+1:]
                 preproc = containers_preprocess_info(self.current_date_id)
                 this_levels.controls = make_containers_column(preproc)
                 this_levels.update()
 
             def add_level(event: flet.ControlEvent):
-                if self.current_date_id >= len(dates) - 1:
+                if self.current_date_id >= len(dates) or self.current_date_id == self.today_date_id:
                     return
                 parent: flet.Row = event.control.parent
                 i = parent.controls[1].value
                 if not i.isnumeric():
                     return
                 i = int(i)
-                final_top[dates[self.current_date_id]] = final_top[dates[self.current_date_id]][:i-1] + [parent.controls[0].value] + final_top[dates[self.current_date_id]][i-1:]
+                total_changelog[dates[self.current_date_id]] = total_changelog[dates[self.current_date_id]][:i-1] + [parent.controls[0].value] + total_changelog[dates[self.current_date_id]][i-1:]
                 preproc = containers_preprocess_info(self.current_date_id)
                 this_levels.controls = make_containers_column(preproc)
                 this_levels.update()
 
             def duplicate_prev_dates():
                 for date_id in range(len(dates)):
-                    pass
+                    if date_id == self.today_date_id:
+                        continue
                     if date_id == self.current_date_id:
                         break
-                    final_top[dates[date_id]] = [e for e in final_top[dates[self.current_date_id]]]
+                    total_changelog[dates[date_id]] = [e for e in total_changelog[dates[self.current_date_id]]]
                 preproc = containers_preprocess_info(self.current_date_id - 1)
                 prev_levels.controls = make_containers_column(preproc) if self.current_date_id > 0 else []
                 prev_levels.update()
 
             def duplicate_next_dates():
                 for date_id in range(len(dates)-1, -1, -1):
-                    pass
+                    if date_id == self.today_date_id:
+                        continue
                     if date_id == self.current_date_id:
                         break
-                    final_top[dates[date_id]] = [e for e in final_top[dates[self.current_date_id]]]
+                    total_changelog[dates[date_id]] = [e for e in total_changelog[dates[self.current_date_id]]]
                 preproc = containers_preprocess_info(self.current_date_id + 1)
                 next_levels.controls = make_containers_column(preproc) if self.current_date_id > 0 else []
                 next_levels.update()
@@ -219,8 +238,9 @@ class App(object):
                            "Back to main menu",
                            on_click=lambda e: init()
                        ),
+                    flet.Container(width=50),
                        flet.Button(
-                           "Go to",
+                           "Time travel",
                            on_click=lambda e: page_open((ad2 := flet.AlertDialog(
                                 modal=True,
                                 # title="Confirmation Dialogue",
@@ -273,7 +293,7 @@ class App(object):
                                 original_data += line
                         save_data = ""
                         for date in dates:
-                            save_data += f"{date}\n{functools.reduce(lambda a, b: str(a) + '|' + str(b), final_top[date]) if len(final_top[date]) != 0 else ''}\n"
+                            save_data += f"{date}\n{functools.reduce(lambda a, b: str(a) + '|' + str(b), total_changelog[date]) if len(total_changelog[date]) != 0 else ''}\n"
                         with open("total_changelog.txt", "w") as final_top_output:
                             final_top_output.write(save_data)
 
@@ -370,35 +390,40 @@ class App(object):
                         next_line_is_date = False
                         continue
                     markdowns[last_date] += line
-                markdowns[today] = "**Current day**"
 
             dates = list(markdowns.keys())[::-1]
-            if today not in dates: dates.append(today)
+            if self.add_today:
+                markdowns[self.today] = "**Current day**"
+                if self.today not in dates: dates.append(self.today)
             dates = sorted(dates, key=lambda e: tuple(map(int, (e[6:10], e[3:5], e[0:2], e.split()[1][:-3], e[-2:]))))
-            self.current_date_id = len(dates) - 1
+            self.today_date_id = dates.index(self.today)
+            self.current_date_id = self.get_current_date_id(dates)
             def next_date() -> Date | None: return None if self.current_date_id == len(dates) - 1 else dates[self.current_date_id + 1]
             def curr_date() -> Date | None: return dates[self.current_date_id]
             def prev_date() -> Date | None: return None if self.current_date_id == 0 else dates[self.current_date_id - 1]
 
-            with open("total_changelog.txt", "r") as final_top_file:
-                final_top: dict[Date: list[Level]] = dict()
+            with open("total_changelog.txt", "r") as total_changelog_file:
+                total_changelog: dict[Date: list[Level]] = dict()
                 last_date: Date = None
                 i = 0
-                for line in final_top_file.readlines():
+                for line in total_changelog_file.readlines():
                     if i % 2 == 0:
                         last_date = line[:-1]
-                        final_top[last_date] = list()
+                        total_changelog[last_date] = list()
                     else:
-                        final_top[last_date] = line[:-1].split("|") if line != "\n" else []
+                        total_changelog[last_date] = line[:-1].split("|") if line != "\n" else []
                     i += 1
-                final_top[today] = all_levels
+                if self.add_today: total_changelog[self.today] = all_levels
                 for date in dates:
-                    if date not in final_top:
-                        final_top[date] = [lv for lv in all_levels]
+                    if date not in total_changelog:
+                        total_changelog[date] = [lv for lv in all_levels]
             show_tops()
 
         def page_open(control: flet.Control) -> flet.Page:
             return page.open(control)
+
+        def load_settings():
+            pass
 
         def init():
             page.on_keyboard_event = on_keyboard
@@ -407,7 +432,7 @@ class App(object):
             page.clean()
             page.add(
                 flet.Container(
-                    padding=flet.Padding(top=40, left=75, right=0, bottom=0), content=
+                    padding=flet.Padding(top=75, left=90, right=0, bottom=0), content=
                     flet.Button(
                         content=flet.Container(
                             flet.Text("View TPL Changelog", font_family="Helvetica", size=30),
@@ -420,7 +445,7 @@ class App(object):
             )
             page.add(
                 flet.Container(
-                    padding=flet.Padding(top=40, left=75, right=0, bottom=0), content=
+                    padding=flet.Padding(top=20, left=90, right=0, bottom=0), content=
                     flet.Button(
                         content=flet.Container(
                             flet.Text("Start Reverse Engineering", font_family="Helvetica", size=30),
@@ -428,12 +453,27 @@ class App(object):
                         ),
                         style=flet.ButtonStyle(shape=flet.RoundedRectangleBorder(radius=20)),
                         on_click=lambda event: start(do_reverse_engineering=True),
-                        disabled=True,
+                        disabled=not self.enable_reverse_engineering,
+                    ),
+                )
+            )
+            page.add(
+                flet.Container(
+                    padding=flet.Padding(top=20, left=120, right=0, bottom=0), content=
+                    flet.Button(
+                        content=flet.Container(
+                            flet.Text("Exit", font_family="Helvetica", size=30),
+                            padding=flet.Padding(top=10, left=10, right=10, bottom=10)
+                        ),
+                        style=flet.ButtonStyle(shape=flet.RoundedRectangleBorder(radius=20)),
+                        on_click=lambda event: page.window.close(),
+                        # disabled=True,
                     ),
                 )
             )
             page.update()
 
+        self.load_settings()
         init()
 
 flet.app(App().main)
